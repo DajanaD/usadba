@@ -1,0 +1,39 @@
+// Аяксовая корзина
+$('form.variants').live('submit', function(e) {
+	e.preventDefault();
+
+	 if($(this).find('input[name=variant]:checked').length)
+	 	variant = $(this).find('input[name=variant]:checked').val();
+	 else
+	 	variant = $(this).find('input[name=variant]').val();
+	
+	//if($(this).find('input[name=variant]').lenght()>0)
+	//	variant = $(this).find('input[name=variant]:checked').val();
+	//if($(this).find('select[name=variant]').size()>0)
+	//	variant = $(this).find('select').val();
+	
+	amount = $(this).find('input[name=amount]').val()*1;
+
+	if(amount=='')
+		return false;
+	
+	$.ajax({
+		url: "ajax/cart.php",
+		data: {variant: variant, amount: amount},
+		dataType: 'json',
+		success: function(data){
+			$('.button_informer').html(data);
+		}
+	});
+
+	$('#cart_inform').fadeIn(500).delay(1500).fadeOut(500);
+	let variantid = $(this).attr('data-variant-id');
+	let variantprice = $(this).attr('data-variant-price');
+
+	fbq('track', 'AddToCart', {
+		value: variantprice,
+		currency: 'UAH',
+		content_ids: variantid,
+	});
+	return false;
+});

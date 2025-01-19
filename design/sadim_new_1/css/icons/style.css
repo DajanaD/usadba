@@ -1,0 +1,75 @@
+@font-face {
+    font-family: 'icomoon';
+    src:    url('https://sadim.com.ua/design/sadim_new_1/css/icons/fonts/icomoon.eot?jcgp1y');
+    src:    url('https://sadim.com.ua/design/sadim_new_1/css/icons/fonts/icomoon.eot?jcgp1y') format('embedded-opentype'),
+        url('https://sadim.com.ua/design/sadim_new_1/css/icons/fonts/icomoon.ttf?jcgp1y') format('truetype'),
+        url('https://sadim.com.ua/design/sadim_new_1/css/icons/fonts/icomoon.woff?jcgp1y') format('woff'),
+        url('https://sadim.com.ua/design/sadim_new_1/css/icons/fonts/icomoon.svg?jcgp1y') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-cross:before {
+    content: "\e90f";
+}
+.icon-map:before {
+    content: "\e900";
+}
+.icon-mail:before {
+    content: "\e908";
+}
+.icon-search:before {
+    content: "\e90a";
+}
+.icon-phone:before {
+    content: "\e901";
+}
+.icon-payment:before {
+    content: "\e902";
+}
+.icon-delivery:before {
+    content: "\e903";
+}
+.icon-leaf:before {
+    content: "\e904";
+}
+.icon-zoomin:before {
+    content: "\e905";
+}
+.icon-new:before {
+    content: "\e90b";
+}
+.icon-discout:before {
+    content: "\e909";
+}
+.icon-star:before {
+    content: "\e906";
+}
+.icon-text:before {
+    content: "\e90c";
+}
+.icon-chat:before {
+    content: "\e90d";
+}
+.icon-cart:before {
+    content: "\e907";
+}
+.icon-menu:before {
+    content: "\e90e";
+}
+

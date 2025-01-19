@@ -1,0 +1,82 @@
+/*
+* 	Owl Carousel Owl Demo Theme 
+*	v1.3.3
+*/
+
+.owl-theme .owl-controls{
+	margin-top: 10px;
+	text-align: center;
+}
+
+/* Styling Next and Prev buttons */
+.owl-pagination {
+	position: absolute;
+	bottom: 23px;
+	right: 2%;
+	/* background-color: rgba(255, 255, 255, 0.72); */
+	padding: 7px 3px 3px 7px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 2px;
+}
+.owl-theme .owl-controls .owl-buttons div{
+	display: block;
+	*display: inline;/*IE7 life-saver *//*IE7 fix*/
+	width: 44px;
+	height: 44px;
+	position: absolute;
+	top: 50%;
+	margin-top: -22px;
+	background-image: url(../img/controls.png);
+}
+.owl-prev {left: -20px; background-position: 0 0;}
+.owl-next {right: -22px; background-position: 100% 0;}
+/* Clickable class fix problem with hover on touch devices */
+/* Use it for non-touch hover action */
+.owl-theme .owl-controls.clickable .owl-buttons div:hover{
+    background-position-y: 100%;
+/*IE7 fix*/
+}
+
+/* Styling Pagination*/
+
+.owl-theme .owl-controls .owl-page{
+	display: inline-block;
+	*display: inline;/*IE7 life-saver */
+}
+.owl-theme .owl-controls .owl-page span{
+	display: block;
+	width: 25px;
+	height: 25px;
+	margin: 0 4px 0 0;/*IE7 fix*/
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	background: #569230;
+	border: 2px solid #57902F;
+}
+
+.owl-theme .owl-controls .owl-page.active span,
+.owl-theme .owl-controls.clickable .owl-page:hover span{/*IE7 fix*/
+    background: #E7551C;
+    border: 2px solid #E5561C;
+}
+
+/* If PaginationNumbers is true */
+
+.owl-theme .owl-controls .owl-page span.owl-numbers{
+	height: auto;
+	width: auto;
+	color: #FFF;
+	padding: 2px 10px;
+	font-size: 12px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+}
+
+/* preloading images */
+.owl-item.loading{
+	min-height: 150px;
+	background: url(https://sadim.com.ua/design/sadim_new_1/css/AjaxLoader.gif) no-repeat center center
+}
