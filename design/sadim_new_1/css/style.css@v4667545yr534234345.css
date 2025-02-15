@@ -256,7 +256,8 @@ div#subl11 {}
 .social_battons{float: left;width: 100%;margin: 20px 0px;}
 .button_paginator{display:inline-block;margin:19px 3px;padding:0 10px}
 #product_form{background-color:#fff;padding-top:15px;padding-bottom:15px;margin-top:15px;position: relative;}
-#foto_big{margin-right:15px;width:70.62343%;height:288px;float:left;display:flex;flex-direction:row-reverse;justify-content:center;align-items:center;overflow:hidden;background-size:cover}
+#foto_big{margin-right:15px;width:100%;float:left;display:flex;flex-direction:row-reverse;justify-content:center;align-items:center;overflow:hidden;background-size:cover}
+#foto_big img {max-width: 100%;max-height: 100%;object-fit: contain;}
 #foto_min{width:90px;float:left;overflow:hidden;margin-left:15px}
 .img_block{max-width:100%;min-width:100%}
 .litle_photo{height:90px;width:90px;float:left;overflow:hidden;display:flex;flex-direction:row-reverse;justify-content:center;align-items:center;margin-bottom:9px;-webkit-border-radius:90px;-moz-border-radius:90px;border-radius:90px;background-size:100% 100%}
@@ -443,13 +444,18 @@ div#subl11 {}
 }
 
 
-@media screen and (min-width:480px) and (max-width:850px) {
+@media screen and (min-width:420px) and (max-width:850px) {
 .menu_list > a {text-align: center!important;}
 .cl_mr_4,.cl_4{width:50%}
 .cl_mr_5,.cl_5,.cl_7,{width:33.33333%}
 .product:nth-child(2n){border-right:none!important}
 .cl_4_5{width:66.66666%}
 #foto_min,#foto_big{width:100%}
+#foto_big img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* або cover, якщо потрібно заповнити контейнер */
+}
 .litle_photo{width:31%;margin-right:2.3333%}
 #phons{display:none}
 #button_informer{width:26.5999%!important}
@@ -465,7 +471,7 @@ div#subl11 {}
 #as_product_img{width:100%!important;padding:0!important}
 .com_text{font-size:16px!important}
 }
-@media screen and (min-width:100px) and (max-width:480px) {
+@media screen and (min-width:100px) and (max-width:420px) {
 .cl_mr_r_1,.cl_mr_l_1,.cl_mr_1,.cl_1 ,
 .cl_mr_r_2,.cl_mr_l_2,.cl_mr_2,.cl_2 ,
 .cl_mr_r_3,.cl_mr_l_3,.cl_mr_3,.cl_3 ,
@@ -495,6 +501,11 @@ div#subl11 {}
 .smt15{margin-top: 15px!important;}
 .size_3{width: 100%!important;padding:0!important;}
 #foto_big {width:100%}
+#foto_big img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* або cover, якщо потрібно заповнити контейнер */
+}
 #left_menu {box-shadow: 0px 0 0px #B4C3AD;border-radius: 3px;margin-top: 15px;padding: 0 10px;background-color: #4B891C;background: linear-gradient(to top, #5F9D30, #77BF40);color: #fff;width: 100%!important;}
 #left_menu .title{color:#fff;height: auto;padding-top: 10px!important;padding-bottom: 8px!important;}
 #left_menu .menu_list{background-color:#fff;padding: 6px;border-radius:3px;}
