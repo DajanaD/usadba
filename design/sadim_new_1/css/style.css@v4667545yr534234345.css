@@ -217,7 +217,7 @@ div#subl11 {}
 
 .eng_name{font-weight: 200;color: #375a1f;}
 .product:nth-child(4n){border-right:none}
-.pr_img{background-size:100% 100%;overflow:hidden;width:185px;height:185px;margin:0 auto;border:5px solid #fff;position:relative;display:flex;flex-direction:row-reverse;justify-content:center;align-items:center;background-color: #fff;}
+.pr_img{background-size:100% 100%;overflow:hidden;width:185px;height:185px;margin:0 auto;border:5px solid #fff;position:relative;display:flex;flex-direction:row-reverse;justify-content:center;align-items:center;background-color: #fff; border-radius: 15px;}
 .pr_titl,.pr_titl h3{width: 97%;margin: 20px auto 5px;display:block;height:60px;text-align:center;text-decoration:none;color: #2F541E;font-size:16px;line-height: 20px;font-weight: 500;}
 .pr_titl h3:hover{color: #60a900;}
 /* .pr_open{width: 30px;height: 30px;position:absolute;right:10%;cursor:pointer;z-index: 20;background-color: #FFFFFF;border-radius: 50px;text-align: center;line-height: 30px;color: #4B891C;} */
