@@ -2569,7 +2569,68 @@
 				ga('create', 'UA-45244631-15', 'auto');
 				ga('send', 'pageview');
 			</script>
-		
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const cartKey = "cartItems";
+
+				function getCart() {
+					return JSON.parse(localStorage.getItem(cartKey)) || [];
+				}
+
+				function saveCart(cart) {
+					localStorage.setItem(cartKey, JSON.stringify(cart));
+					updateCartDisplay();
+				}
+
+				function addToCart(product) {
+					const cart = getCart();
+					const index = cart.findIndex(item => item.variantId === product.variantId);
+					if (index !== -1) {
+						cart[index].quantity += product.quantity;
+					} else {
+						cart.push(product);
+					}
+					saveCart(cart);
+				}
+
+				function updateCartDisplay() {
+					const cart = getCart();
+					const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+					const cartBtn = document.querySelector("#button_informer a");
+					if (cartBtn) {
+						cartBtn.textContent = totalItems > 0 
+							? `У кошику ${totalItems} товар(ів)` 
+							: "Кошик порожній";
+					}
+				}
+
+				// Обробка кнопок "Купити"
+				document.querySelectorAll(".jsAddToCart").forEach(button => {
+					button.addEventListener("click", function (event) {
+						event.preventDefault();
+						const variantId = this.dataset.variantId;
+						const productId = this.dataset.productId;
+						const name = this.dataset.productName;
+						const price = parseFloat(this.dataset.variantPrice);
+						const quantityInput = this.closest("form").querySelector("input[name='amount']");
+						const quantity = parseInt(quantityInput?.value || 1);
+
+						addToCart({
+							variantId,
+							productId,
+							name,
+							price,
+							quantity
+						});
+
+						alert(`Товар "${name}" додано до кошика!`);
+					});
+				});
+
+				updateCartDisplay();
+			});
+</script>
+
 
 	</body>
 

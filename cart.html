@@ -1887,6 +1887,87 @@
 				ga('create', 'UA-45244631-15', 'auto');
 				ga('send', 'pageview');
 			</script>
+			<script>
+    const cartKey = "cartItems";
+
+    function getCart() {
+      return JSON.parse(localStorage.getItem(cartKey)) || [];
+    }
+
+    function saveCart(cart) {
+      localStorage.setItem(cartKey, JSON.stringify(cart));
+    }
+
+    function removeItem(variantId) {
+      let cart = getCart();
+      cart = cart.filter(item => item.variantId !== variantId);
+      saveCart(cart);
+      renderCart();
+    }
+
+    function updateQuantity(variantId, newQuantity) {
+      let cart = getCart();
+      const item = cart.find(i => i.variantId === variantId);
+      if (item) {
+        item.quantity = Math.max(1, parseInt(newQuantity) || 1);
+        saveCart(cart);
+        renderCart();
+      }
+    }
+
+    function renderCart() {
+      const cart = getCart();
+      const container = document.getElementById("cartContainer");
+
+      if (cart.length === 0) {
+        container.innerHTML = '<p class="empty">Ваш кошик порожній.</p>';
+        return;
+      }
+
+      let html = `
+        <table>
+          <thead>
+            <tr>
+              <th>Назва</th>
+              <th>Ціна</th>
+              <th>Кількість</th>
+              <th>Сума</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      let total = 0;
+      cart.forEach(item => {
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
+        html += `
+          <tr>
+            <td>${item.name}</td>
+            <td>${item.price.toFixed(2)} грн</td>
+            <td>
+              <input type="number" min="1" class="quantity-input" 
+                     value="${item.quantity}" 
+                     onchange="updateQuantity('${item.variantId}', this.value)" />
+            </td>
+            <td>${subtotal.toFixed(2)} грн</td>
+            <td><span class="remove-btn" onclick="removeItem('${item.variantId}')">✖</span></td>
+          </tr>
+        `;
+      });
+
+      html += `
+          </tbody>
+        </table>
+        <p class="total">Загальна сума: <strong>${total.toFixed(2)} грн</strong></p>
+      `;
+
+      container.innerHTML = html;
+    }
+
+    document.addEventListener("DOMContentLoaded", renderCart);
+	 </script>
 		
 
 	</body>
