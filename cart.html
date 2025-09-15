@@ -1905,13 +1905,28 @@
       renderCart();
     }
 
-    function updateQuantity(variantId, newQuantity) {
-      let cart = getCart();
-      const item = cart.find(i => i.variantId === variantId);
-      if (item) {
-        item.quantity = Math.max(1, parseInt(newQuantity) || 1);
-        saveCart(cart);
-        renderCart();
+    function updateQuantity(variantId, quantity) {
+        let cart = getCart();
+        const itemIndex = cart.findIndex(item => item.variantId === variantId);
+
+        if (itemIndex !== -1) {
+            cart[itemIndex].quantity = parseInt(quantity);
+            if (cart[itemIndex].quantity <= 0) {
+                removeItem(variantId);
+            } else {
+                saveCart(cart);
+                updateTotalDisplay();
+                // Тут ми не викликаємо renderCart(), щоб уникнути нескінченної рекурсії
+            }
+        }
+    }
+
+    function updateTotalDisplay() {
+      const cart = getCart();
+      const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+      const totalElement = document.querySelector(".total strong");
+      if (totalElement) {
+        totalElement.textContent = `${total.toFixed(2)} грн`;
       }
     }
 
@@ -1947,8 +1962,8 @@
             <td>${item.name}</td>
             <td>${item.price.toFixed(2)} грн</td>
             <td>
-              <input type="number" min="1" class="quantity-input" 
-                     value="${item.quantity}" 
+              <input type="number" min="1" class="quantity-input"
+                     value="${item.quantity}"
                      onchange="updateQuantity('${item.variantId}', this.value)" />
             </td>
             <td>${subtotal.toFixed(2)} грн</td>
@@ -1956,7 +1971,6 @@
           </tr>
         `;
       });
-
       html += `
           </tbody>
         </table>
